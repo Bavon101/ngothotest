@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ngothotest/Pages/PieTest.dart';
+import 'package:ngothotest/Pages/TestTwo.dart';
 
 class TopView extends StatelessWidget {
   const TopView({Key key}) : super(key: key);
@@ -27,7 +29,12 @@ class TopView extends StatelessWidget {
               Icons.menu,
               color: Colors.white,
             ),
-            onPressed: () {},
+            onPressed: () {
+              // Navigator.push(
+              //     context, MaterialPageRoute(builder: (context) => TestTwo()));
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => PieView()));
+            },
           ),
         ),
         Positioned(
@@ -51,14 +58,15 @@ class TopView extends StatelessWidget {
   Widget earingsContainer({String money}) => Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [Text('KSH $money',
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 18
-        ),
-        ), Text('Today\'s Earnings',style: TextStyle(
-          color: Colors.blue,
-          fontSize: 18
-        ),)],
+        children: [
+          Text(
+            'KSH $money',
+            style: TextStyle(color: Colors.white, fontSize: 18),
+          ),
+          Text(
+            'Today\'s Earnings',
+            style: TextStyle(color: Colors.blue, fontSize: 18),
+          )
+        ],
       );
 }
