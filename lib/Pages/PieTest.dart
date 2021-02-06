@@ -48,6 +48,16 @@ class _PieViewState extends State<PieView> {
         ),
         shadowColor: Colors.grey[100],
         backgroundColor: Colors.white,
+        title: CircleAvatar(
+          backgroundColor: Colors.grey[300],
+          child: Text('3',
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold
+          ),
+          ),
+        ),
+        centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

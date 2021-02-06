@@ -15,6 +15,25 @@ class _TestTwoState extends State<TestTwo> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios),
+          color: Colors.grey[400],
+          onPressed: () => Navigator.pop(context),
+        ),
+        shadowColor: Colors.grey[100],
+        backgroundColor: Colors.white,
+        title: CircleAvatar(
+          backgroundColor: Colors.grey[300],
+          child: Text('2',
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold
+          ),
+          ),
+        ),
+        centerTitle: true,
+      ),
       body: Center(
         child: Card(
           shape: RoundedRectangleBorder(
@@ -51,7 +70,9 @@ class _TestTwoState extends State<TestTwo> {
                               'Which of our potential Caraboo Cup third-round opponents do you prefer?',
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontWeight: FontWeight.bold),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: width*.04
+                                  ),
                             ),
                             answerContainer(
                               greater: true,
@@ -75,6 +96,10 @@ class _TestTwoState extends State<TestTwo> {
                           backgroundColor: Colors.white,
                           backgroundImage: NetworkImage(
                               'https://images.unsplash.com/photo-1529248236319-f679e0ba552d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTl8fGdhbWUlMjBvZiUyMHRocm9uZXN8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'),
+                              child: Text('B',style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold
+                              ),),
                         ),
                       )
                     ],
@@ -151,16 +176,7 @@ class _TestTwoState extends State<TestTwo> {
                   ),
                   ),
                 ),
-                  // ClipPath(
-                  //   clipper: TrapeziumClipper(),
-                  //   child: Container(
-                  //     height: height * .06,
-                  //     color: Colors.black87,
-                  //     child: SizedBox(
-                  //       width: width * .10,
-                  //     ),
-                  //   ),
-                  // ),
+                
                   Spacer(),
                 taped ?  Text(percentage,style: TextStyle(
                           color: Colors.white, fontWeight: FontWeight.bold)):Container(height: 0,)
