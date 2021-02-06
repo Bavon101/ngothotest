@@ -30,10 +30,10 @@ class TopView extends StatelessWidget {
               color: Colors.white,
             ),
             onPressed: () {
-              // Navigator.push(
-              //     context, MaterialPageRoute(builder: (context) => TestTwo()));
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => PieView()));
+                  context, MaterialPageRoute(builder: (context) => TestTwo()));
+              // Navigator.push(
+              //     context, MaterialPageRoute(builder: (context) => PieView()));
             },
           ),
         ),

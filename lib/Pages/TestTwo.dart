@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:clippy_flutter/clippy_flutter.dart';
 
 class TestTwo extends StatefulWidget {
   TestTwo({Key key}) : super(key: key);
@@ -53,11 +54,13 @@ class _TestTwoState extends State<TestTwo> {
                                   fontWeight: FontWeight.bold),
                             ),
                             answerContainer(
+                              greater: true,
                                 height: height,
                                 width: width,
                                 option: 'reading'.toUpperCase(),
                                 percentage: '51%'),
                             answerContainer(
+                              greater: false,
                                 height: height,
                                 width: width,
                                 option: 'luton town'.toUpperCase(),
@@ -106,7 +109,7 @@ class _TestTwoState extends State<TestTwo> {
   }
 
   Widget answerContainer(
-          {double height, double width, String option, String percentage}) =>
+          {double height, double width, String option, String percentage,bool greater}) =>
       Padding(
         padding: const EdgeInsets.only(top: 8),
         child: GestureDetector(
@@ -122,10 +125,16 @@ class _TestTwoState extends State<TestTwo> {
               padding:  EdgeInsets.only(left: !taped ? 8:0,right: 8),
               child: Row(
                 children: [
-                  Container(
-                    width: width * .40,
+                    Diagonal(
+                  clipHeight: !taped ? 0:15,
+                  axis: Axis.vertical,
+                  position: DiagonalPosition.TOP_RIGHT,
+                  child: GestureDetector(
+                    
+                    child: Container(
+                    width: !taped ? width * .40: greater ? width * .45:width * .39,
                     height: height * .06,
-                    color: taped ? Colors.grey[900]:Colors.black87,
+                    color: taped ? greater ? Colors.grey:Colors.redAccent :Colors.transparent,
                     child: Center(
                       child: Align(
                         alignment: Alignment.centerLeft,
@@ -140,16 +149,18 @@ class _TestTwoState extends State<TestTwo> {
                       ),
                     ),
                   ),
-                  ClipPath(
-                    clipper: TrapeziumClipper(),
-                    child: Container(
-                      height: height * .06,
-                      color: Colors.black87,
-                      child: SizedBox(
-                        width: width * .10,
-                      ),
-                    ),
                   ),
+                ),
+                  // ClipPath(
+                  //   clipper: TrapeziumClipper(),
+                  //   child: Container(
+                  //     height: height * .06,
+                  //     color: Colors.black87,
+                  //     child: SizedBox(
+                  //       width: width * .10,
+                  //     ),
+                  //   ),
+                  // ),
                   Spacer(),
                 taped ?  Text(percentage,style: TextStyle(
                           color: Colors.white, fontWeight: FontWeight.bold)):Container(height: 0,)
@@ -161,19 +172,4 @@ class _TestTwoState extends State<TestTwo> {
       );
 }
 
-class TrapeziumClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    final path = Path();
-    path.moveTo(size.width, 0.0);
-    path.lineTo(size.width * 53 / 100, 0.0);
-    path.lineTo(size.width * 1 / 3, size.height);
-    path.lineTo(size.width, size.height);
 
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(TrapeziumClipper oldClipper) => false;
-}

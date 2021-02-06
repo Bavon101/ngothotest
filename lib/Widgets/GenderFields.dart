@@ -16,25 +16,38 @@ class _GenderFieldsState extends State<GenderFields> {
     double width = MediaQuery.of(context).size.width;
     return Container(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(widget.gender),
-          Container(
-            height: height*.05,
-            width: width*.45,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.grey[800]
-              )
-            ),
-            child: TextFormField(
-              onChanged: (keyed) => widget.onChanged(keyed),
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                hintText: 'Input Value',
-                hintStyle: TextStyle(
-                  color: Colors.grey[600],
-                  fontWeight: FontWeight.bold
+          Text(widget.gender,
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold
+          ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 8),
+            child: Container(
+              height: height*.05,
+              width: width*.40,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.grey[800]
                 )
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 5),
+                child: TextFormField(
+                  onChanged: (keyed) => widget.onChanged(keyed),
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: 'Input Value',
+                    hintStyle: TextStyle(
+                      color: Colors.grey[300],
+                      fontWeight: FontWeight.w400
+                    )
+                  ),
+                ),
               ),
             ),
           )
